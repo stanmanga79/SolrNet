@@ -26,7 +26,9 @@ namespace SampleSolrApp.Helpers {
         }
 
         public static string SolrFieldPropName<T>(this HtmlHelper helper, string fieldName) {
-            return mapper.GetFields(typeof (T))[fieldName].Property.Name;
+            //return mapper.GetFields(typeof (T))[fieldName].Property.Name;
+            //return "SolrFieldProp";
+            return fieldName;
         }
     }
 }

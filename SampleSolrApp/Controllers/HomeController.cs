@@ -27,9 +27,9 @@ using SolrNet.Exceptions;
 namespace SampleSolrApp.Controllers {
     [HandleError]
     public class HomeController : Controller {
-        private readonly ISolrReadOnlyOperations<Product> solr;
+        private readonly ISolrReadOnlyOperations<SolrTitle> solr;
 
-        public HomeController(ISolrReadOnlyOperations<Product> solr) {
+        public HomeController(ISolrReadOnlyOperations<SolrTitle> solr) {
             this.solr = solr;
         }
 
@@ -40,8 +40,8 @@ namespace SampleSolrApp.Controllers {
         /// <returns></returns>
         public ISolrQuery BuildQuery(SearchParameters parameters) {
             if (!string.IsNullOrEmpty(parameters.FreeSearch))
-                return new SolrQuery(parameters.FreeSearch);
-            return SolrQuery.All;
+                return new SolrQuery("Name:" + parameters.FreeSearch + "*");  //TODO: Just until I change the default in Lucene to Name and figure out contains..
+            return new SolrQueryByField("Type", "Title");
         }
 
         public ICollection<ISolrQuery> BuildFilterQueries(SearchParameters parameters) {
@@ -54,7 +54,8 @@ namespace SampleSolrApp.Controllers {
         /// <summary>
         /// All selectable facet fields
         /// </summary>
-        private static readonly string[] AllFacetFields = new[] {"cat", "manu_exact"};
+        //private static readonly string[] AllFacetFields = new[] {"cat", "manu_exact"};
+        private static readonly string[] AllFacetFields = new[] { "ReleaseYear", "TitleType" };
 
         /// <summary>
         /// Gets the selected facet fields
@@ -100,7 +101,7 @@ namespace SampleSolrApp.Controllers {
             }
         }
 
-        private string GetSpellCheckingResult(ISolrQueryResults<Product> products) {
+        private string GetSpellCheckingResult(ISolrQueryResults<SolrTitle> products) {
             return string.Join(" ", products.SpellChecking
                                         .Select(c => c.Suggestions.FirstOrDefault())
                                         .Where(c => !string.IsNullOrEmpty(c))

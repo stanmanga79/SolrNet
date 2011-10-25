@@ -36,7 +36,8 @@ namespace SampleSolrApp {
 
         public string PostStream(string relativeUrl, string contentType, Stream content, IEnumerable<KeyValuePair<string, string>> getParameters) {
             logger.DebugFormat("POSTing to '{0}'", relativeUrl);
-            return connection.PostStream(relativeUrl, contentType, content, getParameters);
+            //return connection.Post(relativeUrl, contentType, content, getParameters);
+            return connection.Post(relativeUrl,contentType);
         }
 
         public string Get(string relativeUrl, IEnumerable<KeyValuePair<string, string>> parameters) {

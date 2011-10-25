@@ -56,12 +56,12 @@ namespace SampleSolrApp {
 
             var connection = new SolrConnection(solrURL);
             var loggingConnection = new LoggingConnection(connection);
-            Startup.Init<Product>(loggingConnection);
+            Startup.Init<SolrTitle>(loggingConnection);
 
             RegisterAllControllers();
             ControllerBuilder.Current.SetControllerFactory(new ServiceProviderControllerFactory(Startup.Container));
             ModelBinders.Binders[typeof (SearchParameters)] = new SearchParametersBinder();
-            AddInitialDocuments();
+            //AddInitialDocuments();
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace SampleSolrApp {
         /// </summary>
         private void AddInitialDocuments() {
             try {
-                var solr = ServiceLocator.Current.GetInstance<ISolrOperations<Product>>();
+                var solr = ServiceLocator.Current.GetInstance<ISolrOperations<SolrTitle>>();
                 solr.Delete(SolrQuery.All);
                 var connection = ServiceLocator.Current.GetInstance<ISolrConnection>();
                 foreach (var file in Directory.GetFiles(Server.MapPath("/exampledocs"), "*.xml")) {

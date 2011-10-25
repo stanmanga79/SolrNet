@@ -1,0 +1,268 @@
+2011-09-09 12:13:15,298 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - POSTing '<delete><query>*:*</query></delete>' to '/update'
+2011-09-09 12:13:15,537 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - POSTing '<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<add>
+<doc>
+  <field name="id">SP2514N</field>
+  <field name="name">Samsung SpinPoint P120 SP2514N - hard drive - 250 GB - ATA-133</field>
+  <field name="manu">Samsung Electronics Co. Ltd.</field>
+  <field name="cat">electronics</field>
+  <field name="cat">hard drive</field>
+  <field name="features">7200RPM, 8MB cache, IDE Ultra ATA-133</field>
+  <field name="features">NoiseGuard, SilentSeek technology, Fluid Dynamic Bearing (FDB) motor</field>
+  <field name="price">92</field>
+  <field name="popularity">6</field>
+  <field name="inStock">true</field>
+</doc>
+
+<doc>
+  <field name="id">6H500F0</field>
+  <field name="name">Maxtor DiamondMax 11 - hard drive - 500 GB - SATA-300</field>
+  <field name="manu">Maxtor Corp.</field>
+  <field name="cat">electronics</field>
+  <field name="cat">hard drive</field>
+  <field name="features">SATA 3.0Gb/s, NCQ</field>
+  <field name="features">8.5ms seek</field>
+  <field name="features">16MB cache</field>
+  <field name="price">350</field>
+  <field name="popularity">6</field>
+  <field name="inStock">true</field>
+</doc>
+</add>
+
+' to '/update'
+2011-09-09 12:13:19,864 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=*:*, start=0, rows=5, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 12:13:24,172 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=*:*, start=0, rows=20, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 12:13:31,032 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=*:*, start=0, rows=5, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 12:17:31,398 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=*:*, start=0, rows=5, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 12:20:49,429 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - POSTing '<delete><query>*:*</query></delete>' to '/update'
+2011-09-09 12:20:49,585 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - POSTing '<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<add>
+<doc>
+  <field name="id">SP2514N</field>
+  <field name="name">Samsung SpinPoint P120 SP2514N - hard drive - 250 GB - ATA-133</field>
+  <field name="manu">Samsung Electronics Co. Ltd.</field>
+  <field name="cat">electronics</field>
+  <field name="cat">hard drive</field>
+  <field name="features">7200RPM, 8MB cache, IDE Ultra ATA-133</field>
+  <field name="features">NoiseGuard, SilentSeek technology, Fluid Dynamic Bearing (FDB) motor</field>
+  <field name="price">92</field>
+  <field name="popularity">6</field>
+  <field name="inStock">true</field>
+</doc>
+
+<doc>
+  <field name="id">6H500F0</field>
+  <field name="name">Maxtor DiamondMax 11 - hard drive - 500 GB - SATA-300</field>
+  <field name="manu">Maxtor Corp.</field>
+  <field name="cat">electronics</field>
+  <field name="cat">hard drive</field>
+  <field name="features">SATA 3.0Gb/s, NCQ</field>
+  <field name="features">8.5ms seek</field>
+  <field name="features">16MB cache</field>
+  <field name="price">350</field>
+  <field name="popularity">6</field>
+  <field name="inStock">true</field>
+</doc>
+</add>
+
+' to '/update'
+2011-09-09 12:21:03,162 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=*:*, start=0, rows=5, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 12:21:26,372 [10] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=*:*, start=0, rows=5, fq=TitleType:FF, spellcheck=true' from '/select'
+2011-09-09 12:21:32,490 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=*:*, start=0, rows=5, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 12:21:56,658 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=Name:Matrix**, start=0, rows=5, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 12:22:10,337 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=Name:Matrix*, start=0, rows=5, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 12:22:19,265 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=Name:Ma*, start=0, rows=5, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 12:22:24,922 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=Name:Ma*, start=5, rows=5, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 12:22:29,843 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=Name:Ma*, start=0, rows=20, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 12:22:37,758 [10] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=Name:Ma*, start=0, rows=20, fq=TitleType:CN, spellcheck=true' from '/select'
+2011-09-09 12:22:40,091 [10] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=Name:Ma*, start=0, rows=20, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 12:22:43,980 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=Name:Matrix*, start=0, rows=5, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 12:22:49,990 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=Name:Matrix*, start=0, rows=10, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 12:26:29,671 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=Name:Matrix*, start=0, rows=10, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 12:26:46,907 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=Name:Matrix*, start=0, rows=20, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 12:26:51,645 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=Name:stan*, start=0, rows=5, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 12:26:57,119 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=Name:House*, start=0, rows=5, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 12:27:04,069 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=Name:House*, start=0, rows=20, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 12:27:07,967 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=Name:House*, start=80, rows=20, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 12:27:22,632 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=Name:Hou*, start=0, rows=5, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 12:27:30,395 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=Name:Hou*, start=0, rows=20, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 12:33:52,910 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=*:*, start=0, rows=5, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 13:01:21,187 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - POSTing '<delete><query>*:*</query></delete>' to '/update'
+2011-09-09 13:01:21,299 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - POSTing '<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<add>
+<doc>
+  <field name="id">SP2514N</field>
+  <field name="name">Samsung SpinPoint P120 SP2514N - hard drive - 250 GB - ATA-133</field>
+  <field name="manu">Samsung Electronics Co. Ltd.</field>
+  <field name="cat">electronics</field>
+  <field name="cat">hard drive</field>
+  <field name="features">7200RPM, 8MB cache, IDE Ultra ATA-133</field>
+  <field name="features">NoiseGuard, SilentSeek technology, Fluid Dynamic Bearing (FDB) motor</field>
+  <field name="price">92</field>
+  <field name="popularity">6</field>
+  <field name="inStock">true</field>
+</doc>
+
+<doc>
+  <field name="id">6H500F0</field>
+  <field name="name">Maxtor DiamondMax 11 - hard drive - 500 GB - SATA-300</field>
+  <field name="manu">Maxtor Corp.</field>
+  <field name="cat">electronics</field>
+  <field name="cat">hard drive</field>
+  <field name="features">SATA 3.0Gb/s, NCQ</field>
+  <field name="features">8.5ms seek</field>
+  <field name="features">16MB cache</field>
+  <field name="price">350</field>
+  <field name="popularity">6</field>
+  <field name="inStock">true</field>
+</doc>
+</add>
+
+' to '/update'
+2011-09-09 13:01:24,390 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=*:*, start=0, rows=5, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 13:21:56,881 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - POSTing '<delete><query>*:*</query></delete>' to '/update'
+2011-09-09 13:21:56,996 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - POSTing '<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<add>
+<doc>
+  <field name="id">SP2514N</field>
+  <field name="name">Samsung SpinPoint P120 SP2514N - hard drive - 250 GB - ATA-133</field>
+  <field name="manu">Samsung Electronics Co. Ltd.</field>
+  <field name="cat">electronics</field>
+  <field name="cat">hard drive</field>
+  <field name="features">7200RPM, 8MB cache, IDE Ultra ATA-133</field>
+  <field name="features">NoiseGuard, SilentSeek technology, Fluid Dynamic Bearing (FDB) motor</field>
+  <field name="price">92</field>
+  <field name="popularity">6</field>
+  <field name="inStock">true</field>
+</doc>
+
+<doc>
+  <field name="id">6H500F0</field>
+  <field name="name">Maxtor DiamondMax 11 - hard drive - 500 GB - SATA-300</field>
+  <field name="manu">Maxtor Corp.</field>
+  <field name="cat">electronics</field>
+  <field name="cat">hard drive</field>
+  <field name="features">SATA 3.0Gb/s, NCQ</field>
+  <field name="features">8.5ms seek</field>
+  <field name="features">16MB cache</field>
+  <field name="price">350</field>
+  <field name="popularity">6</field>
+  <field name="inStock">true</field>
+</doc>
+</add>
+
+' to '/update'
+2011-09-09 13:21:59,986 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=*:*, start=0, rows=5, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'
+2011-09-09 13:42:29,416 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - POSTing '<delete><query>*:*</query></delete>' to '/update'
+2011-09-09 13:42:29,521 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - POSTing '<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<add>
+<doc>
+  <field name="id">SP2514N</field>
+  <field name="name">Samsung SpinPoint P120 SP2514N - hard drive - 250 GB - ATA-133</field>
+  <field name="manu">Samsung Electronics Co. Ltd.</field>
+  <field name="cat">electronics</field>
+  <field name="cat">hard drive</field>
+  <field name="features">7200RPM, 8MB cache, IDE Ultra ATA-133</field>
+  <field name="features">NoiseGuard, SilentSeek technology, Fluid Dynamic Bearing (FDB) motor</field>
+  <field name="price">92</field>
+  <field name="popularity">6</field>
+  <field name="inStock">true</field>
+</doc>
+
+<doc>
+  <field name="id">6H500F0</field>
+  <field name="name">Maxtor DiamondMax 11 - hard drive - 500 GB - SATA-300</field>
+  <field name="manu">Maxtor Corp.</field>
+  <field name="cat">electronics</field>
+  <field name="cat">hard drive</field>
+  <field name="features">SATA 3.0Gb/s, NCQ</field>
+  <field name="features">8.5ms seek</field>
+  <field name="features">16MB cache</field>
+  <field name="price">350</field>
+  <field name="popularity">6</field>
+  <field name="inStock">true</field>
+</doc>
+</add>
+
+' to '/update'
+2011-09-09 13:42:31,740 [5] DEBUG SampleSolrApp.LoggingConnection [(null)] - GETting 'q=*:*, start=0, rows=5, spellcheck=true, facet=true, facet.field=TitleType, f.TitleType.facet.mincount=1' from '/select'

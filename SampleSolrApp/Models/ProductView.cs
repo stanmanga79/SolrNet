@@ -19,7 +19,7 @@ using System.Collections.Generic;
 namespace SampleSolrApp.Models {
     public class ProductView {
         public SearchParameters Search { get; set; }
-        public ICollection<Product> Products { get; set; }
+        public ICollection<SolrTitle> Products { get; set; }
         public int TotalCount { get; set; }
         public IDictionary<string, ICollection<KeyValuePair<string, int>>> Facets { get; set; }
         public string DidYouMean { get; set; }
@@ -28,7 +28,7 @@ namespace SampleSolrApp.Models {
         public ProductView() {
             Search = new SearchParameters();
             Facets = new Dictionary<string, ICollection<KeyValuePair<string, int>>>();
-            Products = new List<Product>();
+            Products = new List<SolrTitle>();
         }
     }
 }

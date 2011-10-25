@@ -19,6 +19,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
+
 namespace SampleSolrApp {
     public class ServiceProviderControllerFactory : DefaultControllerFactory {
         private readonly IServiceProvider container;
