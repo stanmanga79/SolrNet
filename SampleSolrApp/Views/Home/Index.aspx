@@ -6,21 +6,8 @@
     <title>Welcome to Solr Title search!</title>
 </asp:Content>
 
-<asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
-    <form method="get" action="<%= Url.Action("Index") %>">
-        <%= Html.TextBox("q", Model.Search.FreeSearch) %>
-        <input type="submit" value="Search" />
-        <% if (!string.IsNullOrEmpty(Model.DidYouMean)) { %>
-        Did you mean <strong><em><a href="<%= Url.ForQuery(Model.DidYouMean) %>"><%= Model.DidYouMean%></a></em></strong>
-        <% } %>
-        <% if (Model.QueryError) { %> 
-        <span class="error">Invalid query</span>
-        <% } %>
-    </form>
-    
-    
-    <div class="leftColumn">
-        <% foreach (var f in Model.Search.Facets) { %>
+<asp:Content ContentPlaceHolderID="SideBar" runat="server">
+<% foreach (var f in Model.Search.Facets) { %>
         <ul>
             <li>
                 <%= Html.SolrFieldPropName<SolrTitle>(f.Key) %>
@@ -43,16 +30,31 @@
             </li>
             <% } %>
         </ul>
-    </div>
+</asp:Content>
 
-    <div class="rightColumn">                    
+<asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
+    <form method="get" action="<%= Url.Action("Index") %>">
+        <%= Html.TextBox("q", Model.Search.FreeSearch) %>
+        <input type="submit" value="Search" class="btn primary" />
+        <% if (!string.IsNullOrEmpty(Model.DidYouMean)) { %>
+        Did you mean <strong><em><a href="<%= Url.ForQuery(Model.DidYouMean) %>"><%= Model.DidYouMean%></a></em></strong>
+        <% } %>
+        <% if (Model.QueryError) { %> 
+        <span class="error">Invalid query</span>
+        <% } %>
+    </form>    
+
+    <div>                    
         <div>
-            <% foreach (var p in Model.Products) { %>
-            <div class="product">
-                <div class="productName"><%= p.Name %></div>
-                Title Id: <span class="price"><%= p.ObjectId %></span>, Release Year: <span class="price"><%= p.ReleaseYear %></span><br />               
-            </div>
-            <%} %>
+            <%= Html.Grid(Model.Products)
+                    .Attributes(@class => "zebra-striped")
+                    .Columns(col =>
+                                 {
+                                     col.For(prop => prop.Name);
+                                     col.For(prop => prop.ObjectId);
+                                     col.For(prop => prop.ReleaseYear);
+                                 })%>
+            
         </div>
         
         <% Html.RenderPartial("Pagination", new PaginationInfo {

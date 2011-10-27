@@ -15,6 +15,7 @@
 #endregion
 
 using System;
+using System.Web;
 using System.Web.Mvc;
 
 namespace SampleSolrApp.Helpers {
@@ -23,6 +24,13 @@ namespace SampleSolrApp.Helpers {
 
         public static int RandomNumber(this HtmlHelper helper) {
             return rnd.Next();
+        }
+
+        public static string CurrentUserName(this HtmlHelper helper)
+        {
+            var currentUser = HttpContext.Current.User;
+
+            return (currentUser != null && !(string.IsNullOrEmpty(currentUser.Identity.Name))) ? currentUser.Identity.Name : "Anonymous";
         }
     }
 }
