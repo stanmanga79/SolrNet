@@ -8,6 +8,7 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="SideBar" runat="server">
+<div class="well">
 <% foreach (var f in Model.Search.Facets) { %>        
             <ul class="removeBullet">
                 <li>
@@ -30,20 +31,26 @@
                     </ul>
                 </li>
                 <% } %>
-            </ul>        
+            </ul> 
+</div>       
 </asp:Content>
 
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
-    <form method="get" action="<%= Url.Action("Index") %>">
-        <%= Html.TextBox("q", Model.Search.FreeSearch) %>
-        <input type="submit" value="Search" class="btn primary" />
-        <% if (!string.IsNullOrEmpty(Model.DidYouMean)) { %>
-        Did you mean <strong><em><a href="<%= Url.ForQuery(Model.DidYouMean) %>"><%= Model.DidYouMean%></a></em></strong>
-        <% } %>
-        <% if (Model.QueryError) { %> 
-        <span class="error">Invalid query</span>
-        <% } %>
-    </form>    
+    <div class="well">
+        <form method="get" action="<%= Url.Action("Index") %>" class="form-stacked">
+
+            <label for="Search">Title Name</label>
+            <input id="q" name="q" type="search" value="<%= Model.Search.FreeSearch %>" />
+                    
+            <input type="submit" value="Search" class="btn primary" />
+            <% if (!string.IsNullOrEmpty(Model.DidYouMean)) { %>
+            Did you mean <strong><em><a href="<%= Url.ForQuery(Model.DidYouMean) %>"><%= Model.DidYouMean%></a></em></strong>
+            <% } %>
+            <% if (Model.QueryError) { %> 
+            <span class="error">Invalid query</span>
+            <% } %>
+        </form>    
+    </div>
 
     <div>                    
         <div>
@@ -51,8 +58,8 @@
                     .Attributes(@class => "zebra-striped")
                     .Columns(col =>
                      {
+                         col.For(prop => prop.ObjectId).Named("Title Id");
                          col.For(prop => prop.Name);
-                         col.For(prop => prop.ObjectId);
                          col.For(prop => prop.ReleaseYear);
                      })%>
             
