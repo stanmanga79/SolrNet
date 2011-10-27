@@ -92,7 +92,7 @@ namespace SampleSolrApp.Controllers {
                     Rows = parameters.PageSize,
                     Start = start,
                     OrderBy = GetSelectedSort(parameters),
-                    SpellCheck = new SpellCheckingParameters(),
+                    SpellCheck = new SpellCheckingParameters { Query = parameters.FreeSearch },
                     Facet = new FacetParameters {
                         Queries = facetQueries,
                     },
