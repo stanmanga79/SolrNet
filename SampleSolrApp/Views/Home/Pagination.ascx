@@ -1,5 +1,4 @@
-﻿<%@ Import Namespace="SampleSolrApp.Helpers"%>
-<%@ Import Namespace="SampleSolrApp.Models"%>
+﻿<%@ Import Namespace="SampleSolrApp.Models"%>
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<PaginationInfo>" %>
 
 <div>
@@ -8,24 +7,15 @@
 
 <div class="pagination">
 
-<% if (Model.HasPrevPage) { %>
-<a href="<%= Model.PrevPageUrl %>">&laquo; Previous</a>
-<% } else { %>
-<span class="disabledPage">&laquo; Previous</span>
-<% } %>
+  <ul>
+     <li class="prev <%= (Model.HasPrevPage) ? string.Empty : "disabled" %>"><a href="<%= Model.PrevPageUrl ?? "#" %>">&larr; Previous</a></li>
+     <% foreach (var page in Model.Pages) { %>
+     
+     <li <%= (page == Model.CurrentPage) ? "class='active'" : "" %>><a href="<%= Model.PageUrlFor(page) %>"><%= page %></a></li>
 
-<% foreach (var p in Model.Pages) { %>
-    <% if (p == Model.CurrentPage) {%>
-    <span class="currentPage"><%=p%></span>
-    <% } else {%>
-    <a href="<%=Model.PageUrlFor(p)%>"><%=p%></a>    
-    <% }%>
-<% } %>
+     <% } %>
 
-<% if (Model.HasNextPage) { %>
-<a href="<%= Model.NextPageUrl %>">Next &raquo;</a>
-<% } else { %>
-<span class="disabledPage">Next &raquo;</span>
-<% } %>
+     <li class="next <%= (Model.HasNextPage) ? string.Empty : "disabled" %>"><a href="<%= Model.NextPageUrl ?? "#" %>">Next &rarr;</a></li>
+  </ul>
 
 </div>

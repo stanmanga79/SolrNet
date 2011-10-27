@@ -1,0 +1,15 @@
+﻿body {
+}
+
+a.removeFacet 
+{
+    
+    background: url(close_icon.png) no-repeat center left;
+    padding-left: 15px;
+    cursor: pointer;
+}
+
+.removeBullet ul
+{
+     list-style: none;
+}
