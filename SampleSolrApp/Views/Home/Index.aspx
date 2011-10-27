@@ -9,6 +9,15 @@
 
 <asp:Content ContentPlaceHolderID="SideBar" runat="server">
 <div class="well">
+          <ul>
+              Release Year
+              <% foreach (var solrFacet in Model.SolrFacets)
+                 {%>
+                      <li><a href="default.aspx"><%= solrFacet.Name %></a> <span>(<%= solrFacet.Facet.Value.ToString()%>)</span></li>
+                 <%} %>
+          </ul>
+
+
 <% foreach (var f in Model.Search.Facets) { %>        
             <ul class="removeBullet">
                 <li>

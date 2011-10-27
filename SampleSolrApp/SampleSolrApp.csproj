@@ -105,6 +105,7 @@
     <Compile Include="Models\Binders\SearchParametersBinder.cs" />
     <Compile Include="Models\PaginationInfo.cs" />
     <Compile Include="Models\SolrEntityBase.cs" />
+    <Compile Include="Models\SolrFacet.cs" />
     <Compile Include="Models\SolrTitle.cs" />
     <Compile Include="Models\ProductView.cs" />
     <Compile Include="Models\SearchParameters.cs" />

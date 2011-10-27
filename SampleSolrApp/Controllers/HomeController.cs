@@ -55,7 +55,7 @@ namespace SampleSolrApp.Controllers {
         /// All selectable facet fields
         /// </summary>
         //private static readonly string[] AllFacetFields = new[] {"cat", "manu_exact"};
-        private static readonly string[] AllFacetFields = new[] { "ReleaseYear", "TitleType" };
+        private static readonly string[] AllFacetFields = new[] {"TitleType" };
 
         /// <summary>
         /// Gets the selected facet fields
@@ -73,6 +73,20 @@ namespace SampleSolrApp.Controllers {
         public ActionResult Index(SearchParameters parameters) {
             try {
                 var start = (parameters.PageIndex - 1)*parameters.PageSize;
+
+
+                var facetCustomQueries = getSolrCustomQueries();
+
+                var facetQueries = new List<ISolrFacetQuery>();
+
+                facetQueries.AddRange(facetCustomQueries);
+
+                facetQueries.AddRange(AllFacetFields.Except(SelectedFacetFields(parameters))
+                    .Select(f => new SolrFacetFieldQuery(f) {MinCount = 1})
+                    .Cast<ISolrFacetQuery>()
+                    .ToList());
+
+                
                 var matchingProducts = solr.Query(BuildQuery(parameters), new QueryOptions {
                     FilterQueries = BuildFilterQueries(parameters),
                     Rows = parameters.PageSize,
@@ -80,10 +94,7 @@ namespace SampleSolrApp.Controllers {
                     OrderBy = GetSelectedSort(parameters),
                     SpellCheck = new SpellCheckingParameters(),
                     Facet = new FacetParameters {
-                        Queries = AllFacetFields.Except(SelectedFacetFields(parameters))
-                                                                              .Select(f => new SolrFacetFieldQuery(f) {MinCount = 1})
-                                                                              .Cast<ISolrFacetQuery>()
-                                                                              .ToList(),
+                        Queries = facetQueries,
                     },
                 });
                 var view = new ProductView {
@@ -91,6 +102,8 @@ namespace SampleSolrApp.Controllers {
                     Search = parameters,
                     TotalCount = matchingProducts.NumFound,
                     Facets = matchingProducts.FacetFields,
+                    CustomFacets = matchingProducts.FacetQueries,
+                    SolrFacets = FormatSolrFacets(matchingProducts.FacetQueries),
                     DidYouMean = GetSpellCheckingResult(matchingProducts),
                 };
                 return View(view);
@@ -101,6 +114,62 @@ namespace SampleSolrApp.Controllers {
             }
         }
 
+        private List<SolrFacet> FormatSolrFacets(IEnumerable<KeyValuePair<string, int>> facetQueries)
+        {
+            var solrFacets = new List<SolrFacet>();
+
+            //Add 2000s
+            KeyValuePair<string, int> facet = facetQueries.SingleOrDefault(f => f.Key.Contains("2000"));
+            solrFacets.Add(new SolrFacet { Name = "2000 plus", Facet = facet, Result = facet.Value });
+            //90's
+            facet = facetQueries.SingleOrDefault(f => f.Key.Contains("1990"));
+            solrFacets.Add(new SolrFacet { Name = "1990s", Facet = facet, Result = facet.Value });
+
+            //80's
+            facet = facetQueries.SingleOrDefault(f => f.Key.Contains("1980"));
+            solrFacets.Add(new SolrFacet { Name = "1980s", Facet = facet, Result = facet.Value });
+            
+            //70's
+            facet = facetQueries.SingleOrDefault(f => f.Key.Contains("1970"));
+            solrFacets.Add(new SolrFacet { Name = "1970s", Facet = facet, Result = facet.Value });
+            
+            //60's
+            facet = facetQueries.SingleOrDefault(f => f.Key.Contains("1960"));
+            solrFacets.Add(new SolrFacet { Name = "1960s", Facet = facet, Result = facet.Value });
+            
+            //less than 60's
+            facet = facetQueries.SingleOrDefault(f => f.Key.Contains("1959"));
+            solrFacets.Add(new SolrFacet { Name = "1959 below", Facet = facet, Result = facet.Value });
+            
+
+
+            return solrFacets;
+        }
+      
+        private static List<ISolrFacetQuery> getSolrCustomQueries()
+        {
+            var facetQueries = new List<ISolrFacetQuery>();
+
+            //Add 2000s
+            facetQueries.Add(new SolrFacetQuery(new SolrQueryByRange<int>("ReleaseYear", 2000, int.MaxValue)));
+            //90's
+            facetQueries.Add(new SolrFacetQuery(new SolrQueryByRange<int>("ReleaseYear", 1990, 1999)));
+
+            //80's
+            facetQueries.Add(new SolrFacetQuery(new SolrQueryByRange<int>("ReleaseYear", 1980, 1989)));
+
+            //70's
+            facetQueries.Add(new SolrFacetQuery(new SolrQueryByRange<int>("ReleaseYear", 1970, 1979)));
+
+            //60's
+            facetQueries.Add(new SolrFacetQuery(new SolrQueryByRange<int>("ReleaseYear", 1960, 1969)));
+
+            //less than 60's
+            facetQueries.Add(new SolrFacetQuery(new SolrQueryByRange<int>("ReleaseYear", int.MinValue, 1959)));
+            return facetQueries;
+        }
+
+      
         private string GetSpellCheckingResult(ISolrQueryResults<SolrTitle> products) {
             return string.Join(" ", products.SpellChecking
                                         .Select(c => c.Suggestions.FirstOrDefault())

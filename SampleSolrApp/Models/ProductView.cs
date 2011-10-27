@@ -25,6 +25,9 @@ namespace SampleSolrApp.Models {
         public string DidYouMean { get; set; }
         public bool QueryError { get; set; }
 
+        public IDictionary<string, int> CustomFacets { get; set; }
+        public List<SolrFacet> SolrFacets { get; set; }
+
         public ProductView() {
             Search = new SearchParameters();
             Facets = new Dictionary<string, ICollection<KeyValuePair<string, int>>>();
