@@ -119,6 +119,13 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\close_icon.png" />
     <Content Include="Content\facet.css" />
+    <Content Include="Content\freeow\freeow.css" />
+    <Content Include="Content\freeow\images\close.png" />
+    <Content Include="Content\freeow\images\notice.png" />
+    <Content Include="Content\freeow\images\osx\background.png" />
+    <Content Include="Content\freeow\images\osx\close.png" />
+    <Content Include="Content\freeow\images\pushpin.png" />
+    <Content Include="Content\freeow\images\slide.png" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap-alerts.js" />
@@ -131,6 +138,8 @@
     <Content Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.4.js" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />
+    <Content Include="Scripts\jquery.freeow.js" />
+    <Content Include="Scripts\jquery.freeow.min.js" />
     <Content Include="Views\Home\Pagination.ascx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site.css" />

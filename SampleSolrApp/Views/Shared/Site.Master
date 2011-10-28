@@ -9,7 +9,9 @@
         <title></title>
     </asp:ContentPlaceHolder>
     <link href="../../Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/freeow/freeow.css" rel="stylesheet" type="text/css" />
     <script src="../../Scripts/jquery-1.6.4.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.freeow.min.js" type="text/javascript"></script>
     <script src="../../Scripts/bootstrap-dropdown.js" type="text/javascript"></script>
     <script type="text/javascript">
 
@@ -24,13 +26,14 @@
                     type: 'post',
                     dateType: 'json'
                 }).success(function (data) {
-                    alert(data.Message);
+                    $("#serverMessage").freeow("Optimization Notice", data.Message, { classes: ['smokey'], autoHide: true });
                 });
             });
         });
     </script>
 </head>
 <body style="padding-top: 50px;">
+    <div id="serverMessage" class="freeow freeow-top-right"></div>
     <div class="topbar" data-dropdown="dropdown">
         <div class="fill">
             <div class="container">

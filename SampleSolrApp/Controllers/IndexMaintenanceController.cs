@@ -14,7 +14,7 @@ namespace SampleSolrApp.Controllers
         }
 
         //
-        // GET: /Maintenance/
+        // POST: /Optimize/
         [HttpPost]
         public ActionResult Optimize()
         {
