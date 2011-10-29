@@ -14,6 +14,7 @@
 // limitations under the License.
 #endregion
 
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 
 namespace SampleSolrApp.Models {
@@ -22,6 +23,7 @@ namespace SampleSolrApp.Models {
 
         public SearchParameters() {
             Facets = new Dictionary<string, string>();
+            QueryFacets = new Dictionary<string, string>();
             PageSize = DefaultPageSize;
             PageIndex = 1;
         }
@@ -30,6 +32,7 @@ namespace SampleSolrApp.Models {
         public int PageIndex { get; set; }
         public int PageSize { get; set; }
         public IDictionary<string, string> Facets { get; set; }
+        public IDictionary<string, string> QueryFacets { get; set; }
         public string Sort { get; set; }
 
         public int FirstItemIndex {
@@ -43,5 +46,8 @@ namespace SampleSolrApp.Models {
                 return FirstItemIndex + PageSize;
             }
         }
+
+        
+        
     }
 }

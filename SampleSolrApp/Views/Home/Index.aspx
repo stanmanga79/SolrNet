@@ -11,19 +11,33 @@
 <div class="well">
           <ul>
               Release Year
+              <%if (Model.Search.QueryFacets.Count == 0)
+                { %>
+              <ul>
               <% foreach (var solrFacet in Model.SolrFacets)
                  {%>
-                      <li><a href="default.aspx"><%= solrFacet.Name %></a> <span>(<%= solrFacet.Facet.Value.ToString()%>)</span></li>
-                 <%} %>
+                      <li><a href="<%=Url.SetFacetByQuery(solrFacet.Field, solrFacet.Id.ToString())%>"><%=solrFacet.Name%></a> <span>(<%=solrFacet.Facet.Value.ToString()%>)</span></li>
+                 <% } %>
+             </ul>
+             <% }
+                else
+                {%>
+             <ul>                
+                <% foreach (var f in Model.Search.QueryFacets){%> 
+                <li><a class="removeFacet" href="<%= Url.RemoveFacetByQuery(f.Key) %>"><%= ViewHelperExtensions.GetFacetDisplayName(Model.SolrFacets, f.Value)%></a></li>
+             </ul>
+             <% }
+                } %>
           </ul>
 
 
-<% foreach (var f in Model.Search.Facets) { %>        
+<% foreach (var f in Model.Search.Facets)
+   { %>        
             <ul class="removeBullet">
                 <li>
-                    <%= Html.SolrFieldPropName<SolrTitle>(f.Key) %>
+                    <%= Html.SolrFieldPropName<SolrTitle>(f.Key)%>
                     <ul>
-                        <li><a class="removeFacet" href="<%= Url.RemoveFacet(f.Key) %>"><%= f.Value %></a></li>
+                        <li><a class="removeFacet" href="<%= Url.RemoveFacet(f.Key) %>"><%= f.Value%></a></li>
                     </ul>
                 </li>
             </ul>

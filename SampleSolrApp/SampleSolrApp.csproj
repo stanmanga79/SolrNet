@@ -102,6 +102,7 @@
     <Compile Include="Helpers\UrlHelperExtensions.cs" />
     <Compile Include="Helpers\UrlHelperFacetExtensions.cs" />
     <Compile Include="Helpers\UrlHelperRouteExtensions.cs" />
+    <Compile Include="Helpers\ViewHelperExtensions.cs" />
     <Compile Include="LoggingConnection.cs" />
     <Compile Include="Models\Binders\SearchParametersBinder.cs" />
     <Compile Include="Models\PaginationInfo.cs" />

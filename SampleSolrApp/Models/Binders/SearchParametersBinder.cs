@@ -34,6 +34,7 @@ namespace SampleSolrApp.Models.Binders {
         }
 
         private static readonly Regex FacetRegex = new Regex("^f_", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static readonly Regex QueryFacetRegex = new Regex("^fq_", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) {
             var qs = controllerContext.HttpContext.Request.QueryString;
@@ -45,6 +46,9 @@ namespace SampleSolrApp.Models.Binders {
                 Sort = StringHelper.EmptyToNull(qs["sort"]),
                 Facets = qsDict.Where(k => FacetRegex.IsMatch(k.Key))
                     .Select(k => k.WithKey(FacetRegex.Replace(k.Key, "")))
+                    .ToDictionary(),
+                QueryFacets = qsDict.Where(k => QueryFacetRegex.IsMatch(k.Key))
+                    .Select(k => k.WithKey(QueryFacetRegex.Replace(k.Key, "")))
                     .ToDictionary()
             };
             return sp;

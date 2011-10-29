@@ -40,14 +40,25 @@ namespace SampleSolrApp.Controllers {
         /// <returns></returns>
         public ISolrQuery BuildQuery(SearchParameters parameters) {
             if (!string.IsNullOrEmpty(parameters.FreeSearch))
-                return new SolrQuery("Name:" + parameters.FreeSearch + "*");  //TODO: Just until I change the default in Lucene to Name and figure out contains..
-            return new SolrQueryByField("Type", "Title");
+                return new SolrQuery("Name:" + parameters.FreeSearch + "*");  
+            return SolrQuery.All;
         }
 
-        public ICollection<ISolrQuery> BuildFilterQueries(SearchParameters parameters) {
+        public ICollection<ISolrQuery> BuildFilterQueries(SearchParameters parameters)
+        {
+            var filteredQueries = new List<ISolrQuery>();
+            
+            //Required for all queries
+            filteredQueries.Add(new SolrQueryByField("Type", "Title"));
+
             var queriesFromFacets = from p in parameters.Facets
                                     select (ISolrQuery)Query.Field(p.Key).Is(p.Value);
-            return queriesFromFacets.ToList();
+
+            if (parameters.QueryFacets.Count > 0) filteredQueries.Add(getCustomDecadeQueries().Single(q => q.From.ToString() == parameters.QueryFacets.First().Value));
+
+            filteredQueries.AddRange(queriesFromFacets.ToList());
+            
+            return filteredQueries;
         }
 
 
@@ -120,26 +131,26 @@ namespace SampleSolrApp.Controllers {
 
             //Add 2000s
             KeyValuePair<string, int> facet = facetQueries.SingleOrDefault(f => f.Key.Contains("2000"));
-            solrFacets.Add(new SolrFacet { Name = "2000 plus", Facet = facet, Result = facet.Value });
+            solrFacets.Add(new SolrFacet {Id = 2000, Field = "ReleaseYear" ,Name = "2000 plus", Facet = facet, Result = facet.Value });
             //90's
             facet = facetQueries.SingleOrDefault(f => f.Key.Contains("1990"));
-            solrFacets.Add(new SolrFacet { Name = "1990s", Facet = facet, Result = facet.Value });
+            solrFacets.Add(new SolrFacet { Id = 1990, Field = "ReleaseYear", Name = "1990s", Facet = facet, Result = facet.Value });
 
             //80's
             facet = facetQueries.SingleOrDefault(f => f.Key.Contains("1980"));
-            solrFacets.Add(new SolrFacet { Name = "1980s", Facet = facet, Result = facet.Value });
+            solrFacets.Add(new SolrFacet { Id = 1980, Field = "ReleaseYear", Name = "1980s", Facet = facet, Result = facet.Value });
             
             //70's
             facet = facetQueries.SingleOrDefault(f => f.Key.Contains("1970"));
-            solrFacets.Add(new SolrFacet { Name = "1970s", Facet = facet, Result = facet.Value });
+            solrFacets.Add(new SolrFacet { Id = 1970, Field = "ReleaseYear", Name = "1970s", Facet = facet, Result = facet.Value });
             
             //60's
             facet = facetQueries.SingleOrDefault(f => f.Key.Contains("1960"));
-            solrFacets.Add(new SolrFacet { Name = "1960s", Facet = facet, Result = facet.Value });
+            solrFacets.Add(new SolrFacet { Id = 1960, Field = "ReleaseYear", Name = "1960s", Facet = facet, Result = facet.Value });
             
             //less than 60's
             facet = facetQueries.SingleOrDefault(f => f.Key.Contains("1959"));
-            solrFacets.Add(new SolrFacet { Name = "1959 below", Facet = facet, Result = facet.Value });
+            solrFacets.Add(new SolrFacet { Id = int.MinValue, Field = "ReleaseYear", Name = "1959 below", Facet = facet, Result = facet.Value });
             
 
 
@@ -149,24 +160,26 @@ namespace SampleSolrApp.Controllers {
         private static List<ISolrFacetQuery> getSolrCustomQueries()
         {
             var facetQueries = new List<ISolrFacetQuery>();
+          
+            getCustomDecadeQueries().ForEach(facetQuery => facetQueries.Add(new SolrFacetQuery(facetQuery)));
 
-            //Add 2000s
-            facetQueries.Add(new SolrFacetQuery(new SolrQueryByRange<int>("ReleaseYear", 2000, int.MaxValue)));
-            //90's
-            facetQueries.Add(new SolrFacetQuery(new SolrQueryByRange<int>("ReleaseYear", 1990, 1999)));
-
-            //80's
-            facetQueries.Add(new SolrFacetQuery(new SolrQueryByRange<int>("ReleaseYear", 1980, 1989)));
-
-            //70's
-            facetQueries.Add(new SolrFacetQuery(new SolrQueryByRange<int>("ReleaseYear", 1970, 1979)));
-
-            //60's
-            facetQueries.Add(new SolrFacetQuery(new SolrQueryByRange<int>("ReleaseYear", 1960, 1969)));
-
-            //less than 60's
-            facetQueries.Add(new SolrFacetQuery(new SolrQueryByRange<int>("ReleaseYear", int.MinValue, 1959)));
             return facetQueries;
+        }
+
+
+        private static List<SolrQueryByRange<int>> getCustomDecadeQueries()
+        {
+            var queries = new List<SolrQueryByRange<int>>
+                              {
+                                  new SolrQueryByRange<int>("ReleaseYear", 2000, int.MaxValue),
+                                  new SolrQueryByRange<int>("ReleaseYear", 1990, 1999),
+                                  new SolrQueryByRange<int>("ReleaseYear", 1980, 1989),
+                                  new SolrQueryByRange<int>("ReleaseYear", 1970, 1979),
+                                  new SolrQueryByRange<int>("ReleaseYear", 1960, 1969),
+                                  new SolrQueryByRange<int>("ReleaseYear", int.MinValue, 1959)
+                              };
+          
+            return queries;
         }
 
       
