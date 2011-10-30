@@ -40,16 +40,14 @@ namespace SampleSolrApp.Controllers {
         /// <returns></returns>
         public ISolrQuery BuildQuery(SearchParameters parameters) {
             if (!string.IsNullOrEmpty(parameters.FreeSearch))
-                return new SolrQuery("Name:" + parameters.FreeSearch + "*");  
+                return new SolrQuery(parameters.FreeSearch);
+
             return SolrQuery.All;
         }
 
         public ICollection<ISolrQuery> BuildFilterQueries(SearchParameters parameters)
         {
             var filteredQueries = new List<ISolrQuery>();
-            
-            //Required for all queries
-            filteredQueries.Add(new SolrQueryByField("Type", "Title"));
 
             var queriesFromFacets = from p in parameters.Facets
                                     select (ISolrQuery)Query.Field(p.Key).Is(p.Value);
@@ -103,7 +101,7 @@ namespace SampleSolrApp.Controllers {
                     Rows = parameters.PageSize,
                     Start = start,
                     OrderBy = GetSelectedSort(parameters),
-                    SpellCheck = new SpellCheckingParameters { Query = parameters.FreeSearch },
+                    SpellCheck = new SpellCheckingParameters(),
                     Facet = new FacetParameters {
                         Queries = facetQueries,
                     },

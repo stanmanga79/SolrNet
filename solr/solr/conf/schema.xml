@@ -212,6 +212,23 @@
       </analyzer>
     </fieldType>
 
+
+    <fieldType name="textSpell" class="solr.TextField" positionIncrementGap="100" omitNorms="true">
+      <analyzer type="index">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StandardFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StandardFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
     <!-- A general text field that has reasonable, generic
          cross-language defaults: it tokenizes with StandardTokenizer,
 	 removes stop words from case-insensitive "stopwords.txt"
@@ -573,7 +590,8 @@
 
    <!-- Added By: Lance Cranford / Stanley Lewis -->
    <field name="Id" type="string" indexed="true" stored="true" required="true" /> 
-   <field name="Name" type="text_ngram" indexed="true" stored="true" /> 
+   <field name="Name" type="text_general" indexed="true" stored="true" />
+   <field name="NameText" type="textSpell" indexed="true" stored="true" />
    <field name="ReleaseYear" type="string" indexed="true" stored="true" /> 
    <field name="TitleType" type="text_general" indexed="true" stored="true" /> 
    <field name="ObjectId" type="int" indexed="true" stored="true" required="true" /> 
@@ -680,13 +698,8 @@
   <!-- copyField commands copy one field to another at the time a document
         is added to the index.  It's used either to index the same field differently,
         or to add multiple fields to the same field for easier/faster searching.  -->
-
-   <copyField source="cat" dest="text"/>
-   <copyField source="name" dest="text"/>
-   <copyField source="manu" dest="text"/>
-   <copyField source="features" dest="text"/>
-   <copyField source="includes" dest="text"/>
-   <copyField source="manu" dest="manu_exact"/>
+   <copyField source="Name" dest="NameText"/>
+   <copyField source="Name" dest="text" />
 	
    <!-- Above, multiple source fields are copied to the [text] field. 
 	  Another way to map multiple source fields to the same 

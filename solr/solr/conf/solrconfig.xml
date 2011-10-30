@@ -1104,8 +1104,8 @@
       <str name="name">default</str>
       <str name="field">Name</str>
       <str name="spellcheckIndexDir">spellchecker</str>
-      <str name="accuracy">0.8</str>
-      <float name="thresholdTokenFrequency">.001</float>
+      <str name="accuracy">0.5</str>
+      <!-- float name="thresholdTokenFrequency">.01</float -->
       <str name="buildOnOptimize">true</str>
       <!-- uncomment this to require terms to occur in 1% of the documents in order to be included in the dictionary      
       -->
