@@ -6,6 +6,14 @@
     <link href="../../Content/facet.css" rel="stylesheet" type="text/css" />
     <title>Welcome to Solr Title search!</title>
 </asp:Content>
+<asp:Content ContentPlaceHolderID="JavaScript" runat="server">
+    <script type="text/javascript">
+        $(function () {
+
+            $("tr[rel='popover']").popover({ content: 'datacontent', placement: 'below', animate: true, delayIn: 50 });
+        });
+    </script>
+</asp:Content>
 
 <asp:Content ContentPlaceHolderID="SideBar" runat="server">
 <div class="well">
@@ -79,7 +87,7 @@
         <div>
             <%= Html.Grid(Model.Products)
                     .Attributes(@class => "zebra-striped")
-                    .RowAttributes(row => new MvcContrib.Hash(title => "Fake Title"))
+                    .RowAttributes(row => new MvcContrib.Hash(title => row.Item.Name,  datacontent => "Fake Content", rel => "popover"))
                     .Columns(col =>
                      {
                          col.For(prop => prop.ObjectId).Named("Title Id");
