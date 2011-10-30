@@ -204,6 +204,10 @@ namespace SampleSolrApp.Controllers {
 
       
         private string GetSpellCheckingResult(ISolrQueryResults<SolrTitle> products) {
+
+            //Don't show any suggestions if results returned from solr
+            if (products.Any()) return string.Empty;
+
             return string.Join(" ", products.SpellChecking
                                         .Select(c => c.Suggestions.FirstOrDefault())
                                         .Where(c => !string.IsNullOrEmpty(c))

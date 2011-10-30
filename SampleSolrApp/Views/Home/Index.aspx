@@ -79,6 +79,7 @@
         <div>
             <%= Html.Grid(Model.Products)
                     .Attributes(@class => "zebra-striped")
+                    .RowAttributes(row => new MvcContrib.Hash(title => "Fake Title"))
                     .Columns(col =>
                      {
                          col.For(prop => prop.ObjectId).Named("Title Id");
