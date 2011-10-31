@@ -115,6 +115,28 @@ namespace SampleSolrApp.Controllers {
                     SolrFacets = FormatSolrFacets(matchingProducts.FacetQueries),
                     DidYouMean = GetSpellCheckingResult(matchingProducts),
                 };
+
+
+                List<string> urlHistory;
+
+                if (HttpContext.Session != null && HttpContext.Session["URLHistoryList"] is List<string>)
+                {
+                    urlHistory = (List<string>)HttpContext.Session["URLHistoryList"];
+                    urlHistory.Add(Request.Url.OriginalString);
+
+                    urlHistory = urlHistory.Distinct().ToList();
+
+                    if (urlHistory.Count == 6) urlHistory.Remove(urlHistory.First());
+
+                    HttpContext.Session["URLHistoryList"] = urlHistory;
+                }
+                else
+                {
+                    urlHistory = new List<string>();
+                    if (Request.Url.PathAndQuery.Count() > 1) urlHistory.Add(Request.Url.OriginalString);                    
+                    HttpContext.Session.Add("URLHistoryList",urlHistory);
+                }
+
                 return View(view);
             } catch (InvalidFieldException) {
                 return View(new ProductView {

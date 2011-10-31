@@ -51,6 +51,12 @@
                         <a href="#" class="dropdown-toggle"><%= Html.CurrentUserName() %></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Recent Searches</a></li>
+                                <ul>
+                                  <% foreach (var url in (List<string>)HttpContext.Current.Session["URLHistoryList"])
+                                     {%>
+                                         <li><a href="<%= url %>"><%= url %></a></li>       
+                                     <%} %>                                                                    
+                                </ul>
                             <li><a href="#" id="optimizeIndex">Optimize Index</a></li>
                             <li><a href="#">Rebuild Dictionary</a></li>
                             <li class="divider"></li>
