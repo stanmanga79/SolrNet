@@ -14,7 +14,7 @@
               <%if (Model.Search.QueryFacets.Count == 0)
                 { %>
               <ul>
-              <% foreach (var solrFacet in Model.SolrFacets)
+              <% foreach (var solrFacet in Model.SolrFacets.Where(q => q.Result > 0))
                  {%>
                       <li><a href="<%=Url.SetFacetByQuery(solrFacet.Field, solrFacet.Id.ToString())%>"><%=solrFacet.Name%></a> <span>(<%=solrFacet.Facet.Value.ToString()%>)</span></li>
                  <% } %>
