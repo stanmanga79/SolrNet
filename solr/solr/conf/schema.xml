@@ -593,9 +593,10 @@
    <field name="Name" type="text_general" indexed="true" stored="true" />
    <field name="NameText" type="textSpell" indexed="true" stored="true" />
    <field name="ReleaseYear" type="string" indexed="true" stored="true" /> 
-   <field name="TitleType" type="text_general" indexed="true" stored="true" /> 
-   <field name="ObjectId" type="int" indexed="true" stored="true" required="true" /> 
-   <field name="Type" type="text_general" indexed="true" stored="true" required="true" /> 
+   <field name="TitleType" type="text_general" indexed="true" stored="true" />
+   <field name="Synopsis" type="text_general" indexed="true" stored="true" />
+   <field name="ObjectId" type="int" indexed="true" stored="true" required="false" /> 
+   <field name="Type" type="text_general" indexed="true" stored="true" required="false" /> 
    <field name="IsActive" type="boolean" indexed="true" stored="true" /> 
    <field name="dateStart" type="pdate" indexed="true" stored="true"/>
    <field name="dateEnd" type="pdate" indexed="true" stored="true"/>
@@ -700,6 +701,7 @@
         or to add multiple fields to the same field for easier/faster searching.  -->
    <copyField source="Name" dest="NameText"/>
    <copyField source="Name" dest="text" />
+   <copyField source="Synopsis" dest="text" />
 	
    <!-- Above, multiple source fields are copied to the [text] field. 
 	  Another way to map multiple source fields to the same 

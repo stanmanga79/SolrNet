@@ -87,10 +87,10 @@
         <div>
             <%= Html.Grid(Model.Products)
                     .Attributes(@class => "zebra-striped")
-                    .RowAttributes(row => new MvcContrib.Hash(title => row.Item.Name,  datacontent => "Fake Content", rel => "popover"))
+                    .RowAttributes(row => new MvcContrib.Hash(title => row.Item.Name,  datacontent => row.Item.Synopsis, rel => "popover"))
                     .Columns(col =>
                      {
-                         col.For(prop => prop.ObjectId).Named("Title Id");
+                         col.For(prop => prop.Id).Named("Title Id");
                          col.For(prop => prop.Name);
                          col.For(prop => prop.ReleaseYear);
                      })%>

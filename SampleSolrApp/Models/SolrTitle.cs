@@ -21,87 +21,13 @@ using SolrNet.Attributes;
 namespace SampleSolrApp.Models {
     public class SolrTitle : SolrEntityBase 
     {
-
-        public SolrTitle() : base("Title"){}
-
-        //[SolrUniqueKey("id")]
-        //public string Id { get; set; }
-
-        //[SolrField("sku")]
-        //public string SKU { get; set; }
-
-        //[SolrField("name")]
-        //public string Name { get; set; }
-
-        //[SolrField("manu_exact")]
-        //public string Manufacturer { get; set; }
-
-        //[SolrField("cat")]
-        //public ICollection<string> Categories { get; set; }
-
-        //[SolrField("features")]
-        //public ICollection<string> Features { get; set; }
-
-        //[SolrField("price")]
-        //public decimal Price { get; set; }
-
-        //[SolrField("popularity")]
-        //public int Popularity { get; set; }
-
-        //[SolrField("inStock")]
-        //public bool InStock { get; set; }
-
-        //[SolrField("timestamp")]
-        //public DateTime Timestamp { get; set; }
-
-        //[SolrField("weight")]
-        //public double? Weight { get; set;}
-
-
-
-        [SolrField("dateRelease")]
-        public DateTime ReleaseDate { get; set; }
+        [SolrField("Synopsis")]
+        public string Synopsis { get; set; }
 
         [SolrField("ReleaseYear")]
         public int ReleaseYear { get; set; }
 
         [SolrField("TitleType")]
         public string TitleType { get; set; }
-
-        [SolrField("HasRunsAllowed")]
-        public bool HasRunsAllowed { get; set; }
-
-        [SolrField("IsNetworkPremiere")]
-        public bool IsNetworkPremiere { get; set; }
-
-        [SolrField("IsTenOriginal")]
-        public bool IsTenOriginal { get; set; }
-
-        [SolrField("IsTecTitle")]
-        public bool IsTecTitle { get; set; }
-
-        [SolrField("ContractIds")]
-        public ICollection<int> ContractIds { get; set; }
-
-        [SolrField("DistributorIds")]
-        public ICollection<int> DistributorIds { get; set; }
-
-        [SolrField("PackageIds")]
-        public ICollection<int> PackageIds { get; set; }
-
-        [SolrField("NetworkCodes")]
-        public ICollection<string> NetworkCodes { get; set; }
-
-        [SolrField("AvailStartDate")]
-        public DateTime AvailStartDate { get; set; }
-
-        [SolrField("AvailEndDate")]
-        public DateTime AvailEndDate { get; set; }
-
-        [SolrField("HasRunsBeforePlan")]
-        public bool HasRunsBeforePlan { get; set; }
-
-        [SolrField("HasRunsAfterPlan")]
-        public bool HasRunsAfterPlan { get; set; }
     }
 }
